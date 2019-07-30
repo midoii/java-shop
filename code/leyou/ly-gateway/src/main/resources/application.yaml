@@ -1,0 +1,37 @@
+server:
+  port: 10010
+
+  #routes:
+  #    user-service: /user/**
+  #  ignored-services:
+#zuul默认为每个在ereka上的服务创建了和服务名相同的映射
+#可以通过以下方案修改简单的映射和屏蔽默认服务
+zuul:
+  prefix: /api #添加路由前缀
+  routes:
+    item-service: /item/**
+
+  ignored-services:
+  - consumer-service
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+
+spring:
+  application:
+    name: api-gateway
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMillisecond: 5000 # 熔断超时时长：6000ms
+
+ribbon:
+  ConnectionTimeOut: 1000  #ribbon链接超时时长
+  ReadTimeOut: 3500 #ribbon读取超时时长
+  MaxAutoRetries: 0 #当前服务重试次数
+  MaxAutoRetriesNextServer: 0 #切换服务重试次数
