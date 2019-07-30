@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello</title>
+    <style type="text/css">
+        div#box{
+            width: 100px;
+            height: 100px;
+            color: darkgray;
+        }
+        .red{
+            background-color: red;
+        }
+        .blue{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+<div id = "app">
+    <introduce :title="msg"></introduce>
+    <hr>
+    <for-component :items="lessons"></for-component>
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    const introduce = {
+        template: "<h1>{{title}}</h1>",
+        props: ['title']
+    };
+
+    const forComponent = {
+        template: "<ul><li v-for='item in items'>{{item}}</li></ul>",
+        props: {
+            items: {
+                type: Array,
+                default: ['java']
+            }
+        }
+    };
+
+    const app = new Vue({
+        el:"#app",
+        data: {
+            msg: "大家好，我系渣渣辉！",
+            lessons: ['Java','php','python']
+        },
+        components:{
+            introduce,forComponent
+        }
+    });
+</script>
+</body>
+</html>
