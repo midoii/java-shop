@@ -18,12 +18,12 @@ feign:
     enabled: true
 
 ribbon:
-  ConnectionTimeOut: 500
-  ReadTimeOut: 2000
+  ConnectionTimeout: 500
+  ReadTimeout: 2000
 hystrix:
   command:
     default:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 3000
+            timeoutInMilliseconds: 6000

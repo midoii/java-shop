@@ -17,12 +17,12 @@ feign:
   hystrix:
     enabled: true
 
-ribbon:
+ribbon: #ribbon的超时时长配置
   ConnectionTimeout: 500
   ReadTimeout: 2000
-hystrix:
+hystrix:  #全局配置，在controller里面就只是局部的
   command:
-    default:
+    default:  #在这里填写方法也可以实现局部，那就不用写这么长的注解了
       execution:
         isolation:
           thread:

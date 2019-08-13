@@ -2,7 +2,7 @@ server:
   port: 8081
 spring:
   application:
-    name: item-server
+    name: item-service
   datasource:
     url: jdbc:mysql://localhost:3306/mybatis
     username: root
@@ -11,4 +11,8 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://127.0.0.1:10086/eureka
+      defaultZone: http://127.0.0.1:10086/eureka?useSSL=false&allowPublicKeyRetrieval=true
+
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
